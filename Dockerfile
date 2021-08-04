@@ -1,5 +1,10 @@
 FROM ubuntu:20.04
 
+
+LABEL org.opencontainers.image.authors="contact@ethersys.fr"
+LABEL org.opencontainers.image.source="https://github.com/ethersys/ethersys-docker-munin"
+LABEL org.opencontainers.image.description="Official Munin image with Docker binaries"
+
 # install and configure munin
 RUN apt-get update -qq && RUNLEVEL=1 DEBIAN_FRONTEND=noninteractive \
     apt-get install -y -qq cron munin nginx apache2 wget libapache2-mod-fcgid libcgi-fast-perl ssmtp mailutils curl tzdata autoconf
