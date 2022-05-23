@@ -28,4 +28,4 @@ jobs:
         uses: docker/build-push-action@v3
         with:
           push: true
-          tags: ghcr.io/ethersys/munin:latest
+          tags: ghcr.io/ethersys/munin:latest,ghcr.io/ethersys/munin:2.0.57
