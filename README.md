@@ -8,16 +8,16 @@ Update base image (ubuntu 20.04) and munin (2.0.56) and add easily configurable 
 ### Build
 
 ```bash
-git clone https://github.com/occitech/docker.git
-docker build -t munin ./munin
+git clone git@github.com:ethersys/ethersys-docker-munin.git
+docker build -t munin ./
 docker run -p 80 munin
 ```
 
 ### Or pull
 
 ```bash
-docker pull occitech/munin
-docker run -p 80 occitech/munin:latest
+docker pull ghcr.io/ethersys/munin
+docker run -p 80 ghcr.io/ethersys/munin:latest
 ```
 
 ## How it works
@@ -68,5 +68,5 @@ docker run \
  -v /data/munin/db:/var/lib/munin \
  -v /data/munin/logs:/var/log/munin \
  -v /data/munin/cache:/var/cache/munin \
- munin
+ ghcr.io/ethersys/munin
 ```
