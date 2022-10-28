@@ -46,6 +46,7 @@ docker run -p 80 ghcr.io/ethersys/munin:latest
 - `MAILUSER`: User to Auth on your mail server  (i.e. `user@example.test`, needed for mail alert)
 - `MAILPASSWORD`: Password of your mail server (needed for mail alert)
 - `MAILFROM`: Where the mail seems to come from (i.e. `munin@example.test`, needed for mail alert)
+- `MAILDOMAIN`: Domain of your mail server (i.e. `example.test`, needed for mail alert)
 - `SLACKCHANNEL`: Name of your Slack channel (i.e. `hosting`, needed for Slack alert)
 - `SLACKWEBHOOKURL`: URL of your Slack webhook (i.e. `https://hooks.slack.com/services/XXXXX/YYYYYYY/ZZZZZZZ`, needed for Slack alert)
 - `SLACKUSER`: Username of munin bot on your Slack

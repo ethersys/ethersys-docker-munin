@@ -29,7 +29,7 @@ fi
 
 # configure mail notification
 
-if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" && -n "$MAILPASSWORD" ]] ; then
+if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" && -n "$MAILPASSWORD" & -n "$MAILDOMAIN" ]] ; then
   MAILCONTACT=${MAILCONTACT:="contact@domain.test"}
   sed -i "s/mailcontact/$MAILCONTACT/g" /etc/msmtprc
   sed -i "s/mailcontact/$MAILCONTACT/g" /etc/munin/munin-conf.d/munin_mail.conf
@@ -43,7 +43,8 @@ if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" 
   sed -i "s/mailpassword/$MAILPASSWORD/g" /etc/msmtprc
   MAILFROM=${MAILFROM:=$MAILUSER}
   sed -i "s/mailfrom/$MAILFROM/g" /etc/msmtprc
-  sed -i "s/mailfrom/$MAILFROM/g" /etc/aliases
+  MAILDOMAIN=${MAILDOMAIN:="domain.test"}
+  sed -i "s/maildomain/$MAILDOMAIN/g" /etc/msmtprc
   MAILNAME=${MAILNAME:="Munin"}
   sed -i "s/munin application user/$MAILNAME/g" /etc/passwd
 else
