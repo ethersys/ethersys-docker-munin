@@ -29,25 +29,20 @@ fi
 
 # configure mail notification
 
-if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" && -n "$MAILPASSWORD" && -n "$MAILDOMAIN" ]] ; then
+if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" && -n "$MAILPASSWORD" ]] ; then
   MAILCONTACT=${MAILCONTACT:="contact@domain.test"}
-  sed -i "s/mailcontact/$MAILCONTACT/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailcontact/$MAILCONTACT/g" /etc/msmtprc
   sed -i "s/mailcontact/$MAILCONTACT/g" /etc/munin/munin-conf.d/munin_mail.conf
   MAILSERVER=${MAILSERVER:="mail.domain.test"}
-  sed -i "s/mailserver/$MAILSERVER/g" /etc/ssmtp/ssmtp.conf
-  sed -i "s/mailserver/$MAILSERVER/g" /etc/ssmtp/revaliases
+  sed -i "s/mailserver/$MAILSERVER/g" /etc/msmtprc
   MAILPORT=${MAILPORT:="25"}
-  sed -i "s/mailport/$MAILPORT/g" /etc/ssmtp/ssmtp.conf
-  sed -i "s/mailport/$MAILPORT/g" /etc/ssmtp/revaliases
-  MAILUSER=${MAILUSER:="alert@domain.test"}
-  sed -i "s/mailuser/$MAILUSER/g" /etc/ssmtp/ssmtp.conf
-  MAILFROM=${MAILFROM:="munin@domain.test"}
-  sed -i "s/mailfrom/$MAILFROM/g" /etc/ssmtp/revaliases
+  sed -i "s/mailport/$MAILPORT/g" /etc/msmtprc
+  MAILUSER=${MAILUSER:="munin@domain.test"}
+  sed -i "s/mailuser/$MAILUSER/g" /etc/msmtprc
   MAILPASSWORD=${MAILPASSWORD:="XXXXXXXXX"}
-  sed -i "s/mailpassword/$MAILPASSWORD/g" /etc/ssmtp/ssmtp.conf
-  MAILDOMAIN=${MAILDOMAIN:="domain.test"}
-  sed -i "s/maildomain/$MAILDOMAIN/g" /etc/ssmtp/ssmtp.conf
-  sed -i "s/mailhost/$MAILDOMAIN/g" /etc/ssmtp/ssmtp.conf
+  sed -i "s/mailpassword/$MAILPASSWORD/g" /etc/msmtprc
+  MAILFROM=${MAILFROM:=$MAILUSER}
+  sed -i "s/mailfrom/$MAILFROM/g" /etc/msmtprc
   MAILNAME=${MAILNAME:="Munin"}
   sed -i "s/munin application user/$MAILNAME/g" /etc/passwd
 else

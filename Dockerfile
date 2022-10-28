@@ -7,7 +7,7 @@ LABEL org.opencontainers.image.description="Official Munin image with Docker bin
 
 # install and configure munin
 RUN apt-get update -qq && RUNLEVEL=1 DEBIAN_FRONTEND=noninteractive \
-    apt-get install -y -qq cron munin nginx apache2 wget libapache2-mod-fcgid libcgi-fast-perl ssmtp mailutils curl tzdata autoconf
+    apt-get install -y -qq cron munin nginx apache2 wget libapache2-mod-fcgid libcgi-fast-perl msmtp msmtp-mta mailutils curl tzdata autoconf
 RUN (cp /etc/munin/apache24.conf /etc/apache2/sites-available/000-default.conf)
 RUN (sed -i 's/^Alias.*/Alias \/ \/var\/cache\/munin\/www\//g' /etc/apache2/sites-available/000-default.conf)
 RUN (sed -i 's/Allow from .*/Satisfy Any/g' /etc/apache2/sites-available/000-default.conf)
@@ -20,8 +20,7 @@ RUN (/usr/sbin/a2enmod fcgid)
 COPY 000-default.conf /etc/apache2/sites-available/000-default.conf
 COPY logrotate-munin /etc/logrotate.d/munin
 COPY munin.conf /etc/munin/munin.conf
-COPY ssmtp.conf /etc/ssmtp/ssmtp.conf
-COPY revaliases /etc/ssmtp/revaliases
+COPY msmtprc /etc/msmtprc
 COPY munin_mail.conf /etc/munin/munin-conf.d/munin_mail.conf
 COPY slack_munin.sh /usr/local/bin/notify_slack_munin
 RUN chmod +x /usr/local/bin/notify_slack_munin
