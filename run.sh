@@ -43,6 +43,7 @@ if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" 
   sed -i "s/mailpassword/$MAILPASSWORD/g" /etc/msmtprc
   MAILFROM=${MAILFROM:=$MAILUSER}
   sed -i "s/mailfrom/$MAILFROM/g" /etc/msmtprc
+  sed -i "s/mailfrom/$MAILFROM/g" /etc/munin/munin-conf.d/munin_mail.conf
   MAILDOMAIN=${MAILDOMAIN:="domain.test"}
   sed -i "s/maildomain/$MAILDOMAIN/g" /etc/msmtprc
   MAILNAME=${MAILNAME:="Munin"}
