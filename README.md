@@ -24,7 +24,7 @@ docker run -p 80 ghcr.io/ethersys/munin:latest
 
 ### Ports
 
-- 80
+- 80 (configurable via environment variable `LISTENPORT`)
 
 ### Volumes
 
@@ -40,6 +40,7 @@ docker run -p 80 ghcr.io/ethersys/munin:latest
 - `THISNODENAME`: Customize the displayed node name for local host (default: `munin`)
 - `THISNODEIP`: Customize the node IP for local host (default: `127.0.0.1`)
 - `DISABLELOCALNODE`: Disable local munin node (default: `no`)
+- `LISTENPORT`: The port in which Apache will listen on (default: `80`)
 - `MAILCONTACT`: Recipient of the mail alert (i.e. `alert@example.test`, needed for mail alert)
 - `MAILSERVER`: Address of your mail server (i.e. `mail.example.test`, needed for mail alert)
 - `MAILPORT`: Port of your SMTP mail server  (i.e. `25`, needed for mail alert)
@@ -51,7 +52,7 @@ docker run -p 80 ghcr.io/ethersys/munin:latest
 - `SLACKWEBHOOKURL`: URL of your Slack webhook (i.e. `https://hooks.slack.com/services/XXXXX/YYYYYYY/ZZZZZZZ`, needed for Slack alert)
 - `SLACKUSER`: Username of munin bot on your Slack
 - `SLACKICON`: Icon of munin bot on your Slack
-- `VIRTUAL_HOST`: FQDN of your munin website
+- `VIRTUAL_HOST`: FQDN of your munin website (needed for Slack alert)
 
 ## Persistent example
 
