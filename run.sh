@@ -27,6 +27,10 @@ if [[ $DISABLELOCALNODE == "yes" ]] ; then
   echo "includedir /etc/munin/munin-conf.d" > /etc/munin/munin.conf
 fi
 
+# configure apache port
+LISTENPORT=${LISTENPORT:="80"}
+sed -i "s/Listen 80/Listen $LISTENPORT/g" /etc/apache2/ports.conf
+
 # configure mail notification
 
 if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" && -n "$MAILPASSWORD" && -n "$MAILDOMAIN" ]] ; then

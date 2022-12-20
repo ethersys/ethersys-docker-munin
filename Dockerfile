@@ -35,7 +35,5 @@ VOLUME /var/lib/munin
 VOLUME /var/log/munin
 VOLUME /var/cache/munin
 
-EXPOSE 80
-
 # launcher
 CMD ["/usr/local/bin/run"]
