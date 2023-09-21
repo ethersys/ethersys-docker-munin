@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM debian:12
 
 
 LABEL org.opencontainers.image.authors="contact@ethersys.fr"
