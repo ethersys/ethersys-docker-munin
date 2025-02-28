@@ -52,6 +52,10 @@ if [[ -n "$MAILCONTACT" && -n "$MAILSERVER" && -n "$MAILPORT" && -n "$MAILUSER" 
   sed -i "s/maildomain/$MAILDOMAIN/g" /etc/msmtprc
   MAILNAME=${MAILNAME:="Munin"}
   sed -i "s/munin application user/$MAILNAME/g" /etc/passwd
+  MAILTLS=${MAILTLS:="off"}
+  sed -i "s/mailtls/$MAILTLS/g" /etc/msmtprc
+  MAILSTARTTLS=${MAILSTARTTLS:="on"}
+  sed -i "s/mailstarttls/$MAILSTARTTLS/g" /etc/msmtprc
 else
   rm /etc/munin/munin-conf.d/munin_mail.conf /etc/ssmtp/ssmtp.conf
 fi

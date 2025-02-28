@@ -3,7 +3,7 @@
 ## Quickstart
 
 Munin stats aggregator and reporting, based on lrivallain (<https://github.com/lrivallain)> and Arcus (<http://arcus.io)> work.
-Update base image (ubuntu 22.04) and munin (2.0.57) and add easily configurable mail and Slack notifications.
+Update base image (ubuntu 24.04) and munin (2.0.75) and add easily configurable mail and Slack notifications.
 
 ### Build
 
@@ -48,6 +48,8 @@ docker run -p 80 ghcr.io/ethersys/munin:latest
 - `MAILPASSWORD`: Password of your mail server (needed for mail alert)
 - `MAILFROM`: Where the mail seems to come from (i.e. `munin@example.test`, needed for mail alert)
 - `MAILDOMAIN`: Domain of your mail server (i.e. `example.test`, needed for mail alert)
+- `MAILSTARTTLS`: Enable STARTTLS for email (default: `on`)
+- `MAILTLS`: Enable TLS for email (default: `off`)
 - `SLACKCHANNEL`: Name of your Slack channel (i.e. `hosting`, needed for Slack alert)
 - `SLACKWEBHOOKURL`: URL of your Slack webhook (i.e. `https://hooks.slack.com/services/XXXXX/YYYYYYY/ZZZZZZZ`, needed for Slack alert)
 - `SLACKUSER`: Username of munin bot on your Slack
